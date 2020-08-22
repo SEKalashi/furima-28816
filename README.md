@@ -47,7 +47,7 @@
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
-| items           | references | null: false, foreign_key: true |
+| item            | references | null: false, foreign_key: true |
 | image           | string     | null: false                    |
 
 ### Association
@@ -55,7 +55,7 @@
 - belongs_to :items
 
 
-##  orderテーブル
+##  ordersテーブル
 
 | Column          | Type        | Options                        |
 | --------------- | ----------- | ------------------------------ |
@@ -66,16 +66,16 @@
 
 - belongs_to :user
 - belongs_to :item
-- has many :shipping_address
+- has_one :shipping_address
 
 
-##  shipping_addressテーブル
+##  shipping_addressesテーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| postal_code      | integer    | null: false                    |
+| postal_code      | string     | null: false                    |
 | address          | string     | null: false                    |
-| house_number     | integer    | null: false                    |
+| house_number     | string     | null: false                    |
 | house_name       | string     |                                |
 | prefecture       | integer    | null: false                    |
 | order            | references | null: false, foreign_key: true |
