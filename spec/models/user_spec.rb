@@ -8,11 +8,12 @@ RSpec.describe User do
     context '新規登録がうまくいくとき' do
       it "ユーザーデータが存在すれば登録できる" do
           expect(@user).to be_valid
+          # binding.pry
       end
 
       it "passwordが6文字以上であれば登録できる" do
-        @user.password = "000000"
-        @user.password_confirmation = "000000"
+        @user.password = "0000aA"
+        @user.password_confirmation = "0000aA"
         expect(@user).to be_valid
       end
     end
