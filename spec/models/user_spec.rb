@@ -7,17 +7,20 @@ describe User do
   describe 'ユーザー新規登録' do
     context '新規登録がうまくいくとき' do
       it "ユーザーデータが存在すれば登録できる" do
+          expect(@user).to be_valid
       end
       it "nameが6文字以下で登録できる" do
+        @user.name = "aaaaaa"
+        expect(@user).to be_valid
       end
       it "passwordが6文字以上であれば登録できる" do
       end
     end
 
     context '新規登録がうまくいかないとき' do
-      it "nicknameが空だと登録できない" do
+      it "nameが空だと登録できない" do
       end
-      it "nicknameが7文字以上であれば登録できない" do
+      it "nameが7文字以上であれば登録できない" do
       end
       it "emailが空では登録できない" do
       end
