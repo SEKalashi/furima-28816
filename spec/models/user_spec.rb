@@ -36,6 +36,11 @@ RSpec.describe User do
         another_user.valid?
         expect(another_user.errors.full_messages).to include('Email has already been taken')
       end
+      it 'emailが半角の@を含んだ正しい形式でないと保存できないこと' do
+        @user.email = 'aaaaaagmail.com'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email is invalid. Include at sign(@)")
+      end
       it 'passwordが空では登録できない' do
         @user.password = ''
         @user.valid?
