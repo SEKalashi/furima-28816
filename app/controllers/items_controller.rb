@@ -7,10 +7,11 @@ class ItemsController < ApplicationController
     @items = User.new
   end
 
-  def edit
+  def create
   end
 
-  def show
+  def destroy
   end
+
 
 end
