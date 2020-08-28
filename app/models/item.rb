@@ -3,11 +3,21 @@ class Item < ApplicationRecord
   belongs_to :user
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :status, :shipping_time, :delivery_charge, :category, :sending_area,
+  belongs_to_active_hash :status
+  belongs_to_active_hash :shipping_time
+  belongs_to_active_hash :delivery_charge
+  belongs_to_active_hash :category
+  belongs_to_active_hash :sending_area
 
 
   #ジャンルの選択が「--」の時は保存できないようにする
-  validates :status_id, :shipping_time_id, :delivery_charge_id, :category_id, :sending_area_id, numericality: { other_than: 1 }
+  with_options numericality: { other_than: 1, message: 'Select' } do
+    validates :status_id
+    validates :shipping_time_id
+    validates :delivery_charge_id
+    validates :category_id
+    validates :sending_area_id
+  end
 
   with_options presence: true do
     validates :name, :description
