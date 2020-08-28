@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   has_many :images
-  belong_to :user
+  belongs_to :user
 
   with_options presence: true do
     validates :price, format: { with: /\d/, message: "is invalid. Input half-width integer."}

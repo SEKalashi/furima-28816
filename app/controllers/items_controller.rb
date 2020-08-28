@@ -4,14 +4,20 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @items = User.new
+    @items = Item.new
   end
 
   def create
+    @items = Item.create(items_params)
   end
 
   def destroy
   end
 
+  private
+
+  def items_params
+    params.require(:user).permit(:name)
+  end
 
 end
