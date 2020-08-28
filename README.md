@@ -29,10 +29,10 @@
 | name            | string      | null: false                    |
 | description     | text        | null: false                    |
 | status          | integer     | null: false                    |
-| shipping_day    | integer     | null: false                    |
-| delivery_change | integer     | null: false                    |
+| shipping_time   | integer     | null: false                    |
+| delivery_charge | integer     | null: false                    |
 | category        | integer     | null: false                    |
-| sender          | integer     | null: false                    |
+| sending_area    | integer     | null: false                    |
 | price           | integer     | null: false                    |
 | user            | references  | null: false, foreign_key: true |
 
