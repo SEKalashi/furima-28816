@@ -39,7 +39,7 @@ RSpec.describe User do
       it 'emailが半角の@を含んだ正しい形式でないと保存できないこと' do
         @user.email = 'aaaaaagmail.com'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid. Include at sign(@)")
+        expect(@user.errors.full_messages).to include('Email is invalid. Include at sign(@)')
       end
       it 'passwordが空では登録できない' do
         @user.password = ''
@@ -63,9 +63,9 @@ RSpec.describe User do
         expect(@user.errors.full_messages).to include("First name can't be blank")
       end
       it 'first_nameが全角日本語でないと保存できないこと' do
-        @user.first_name = "ﾔﾏﾀﾞ"
+        @user.first_name = 'ﾔﾏﾀﾞ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name is invalid. Input full-width characters.")
+        expect(@user.errors.full_messages).to include('First name is invalid. Input full-width characters.')
       end
       it 'first_kanaが空では登録できない' do
         @user.first_kana = ''
@@ -73,9 +73,9 @@ RSpec.describe User do
         expect(@user.errors.full_messages).to include("First kana can't be blank")
       end
       it 'first_kanaが全角カタカナでないと保存できないこと' do
-        @user.first_kana = "たろう"
+        @user.first_kana = 'たろう'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First kana is invalid. Input full-width katakana characters.")
+        expect(@user.errors.full_messages).to include('First kana is invalid. Input full-width katakana characters.')
       end
       it 'family_nameが空では登録できない' do
         @user.family_name = ''
@@ -83,9 +83,9 @@ RSpec.describe User do
         expect(@user.errors.full_messages).to include("Family name can't be blank")
       end
       it 'family_nameが全角日本語でないと保存できないこと' do
-        @user.family_name = "ﾔﾏﾀﾞ"
+        @user.family_name = 'ﾔﾏﾀﾞ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Family name is invalid. Input full-width characters.")
+        expect(@user.errors.full_messages).to include('Family name is invalid. Input full-width characters.')
       end
       it 'family_kanaが空では登録できない' do
         @user.family_kana = ''
@@ -93,9 +93,9 @@ RSpec.describe User do
         expect(@user.errors.full_messages).to include("Family kana can't be blank")
       end
       it 'family_kanaが全角カタカナでないと保存できないこと' do
-        @user.family_kana = "やまだﾞ"
+        @user.family_kana = 'やまだﾞ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Family kana is invalid. Input full-width katakana characters.")
+        expect(@user.errors.full_messages).to include('Family kana is invalid. Input full-width katakana characters.')
       end
       it 'birthdayが空では登録できない' do
         @user.birthday = ''
