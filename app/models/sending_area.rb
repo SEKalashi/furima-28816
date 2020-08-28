@@ -1,0 +1,2 @@
+class SendingArea < ApplicationRecord
+end
