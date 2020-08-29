@@ -2,16 +2,20 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :destroy]
 
   def index
-    @items = Item.all
+    @items = User.all
   end
 
   def new
-    @items = Item.new
-    # binding.pry
+    @items = User.new
   end
 
   def create
-    Item.create(items_params)
+    @items = User.new(items_params)
+    if @items.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -20,6 +24,8 @@ class ItemsController < ApplicationController
   private
 
   def items_params
-    params.require(:item).permit(:name, :description, :status, :shipping_time, :delivery_charge, :category, :sending_area, :price).merge(user_id: current_user.id).merge(image_id: current_image.id)
+    params.require(:user).merge(image: image.id)
+    # .permit(:name, :description, :status_id, :shipping_time_id, :delivery_charge_id, :category_id, :sending_area_id, :price)
+    # .merge(user_id: current_user.id).merge(image_id: current_image.id)
   end
 end
