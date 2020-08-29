@@ -18,10 +18,10 @@ RSpec.describe User do
     end
 
     context '新規登録がうまくいかないとき' do
-      it 'nicknameが空だと登録できない' do
-        @user.nickname = ''
+      it 'nameが空だと登録できない' do
+        @user.name = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Nickname can't be blank")
+        expect(@user.errors.full_messages).to include("Name can't be blank")
       end
 
       it 'emailが空では登録できない' do
