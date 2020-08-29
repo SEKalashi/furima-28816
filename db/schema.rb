@@ -10,23 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_27_031841) do
-
-  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "image", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+ActiveRecord::Schema.define(version: 2020_08_27_030709) do
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
-    t.integer "status", null: false
-    t.integer "shipping_day", null: false
-    t.integer "delivery_change", null: false
-    t.integer "category", null: false
-    t.integer "sender", null: false
+    t.integer "status_id", null: false
+    t.integer "shipping_time_id", null: false
+    t.integer "delivery_charge_id", null: false
+    t.integer "category_id", null: false
+    t.integer "sending_area_id", null: false
     t.integer "price", null: false
+    t.string "image", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -34,7 +29,7 @@ ActiveRecord::Schema.define(version: 2020_08_27_031841) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "nickname", null: false
     t.string "first_name", null: false
     t.string "first_kana", null: false
     t.string "family_name", null: false

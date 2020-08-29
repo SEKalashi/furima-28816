@@ -11,10 +11,12 @@ class ItemsController < ApplicationController
   end
 
   def create
-    Item.create(items_params)
-  end
-
-  def destroy
+    @items = Item.new(items_params)
+    if @items.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   private

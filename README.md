@@ -7,7 +7,7 @@
 
 | Column         | Type   | Options     |
 | -------------- | ------ | ----------- |
-| name           | string | null: false |
+| nickname       | string | null: false |
 | email          | string | null: false |
 | password       | string | null: false |
 | first_name     | string | null: false |
@@ -34,25 +34,14 @@
 | category        | integer     | null: false                    |
 | sending_area    | integer     | null: false                    |
 | price           | integer     | null: false                    |
+| image           | string      | null: false                    |
 | user            | references  | null: false, foreign_key: true |
 
 ### Association
 
-- has_many :images
 - belongs_to :user
 - has_one :order
 
-
-##  imagesテーブル
-
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| item            | references | null: false, foreign_key: true |
-| image           | string     | null: false                    |
-
-### Association
-
-- belongs_to :items
 
 
 ##  ordersテーブル
