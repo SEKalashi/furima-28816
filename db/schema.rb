@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 2020_08_31_140052) do
     t.integer "category_id", null: false
     t.integer "sending_area_id", null: false
     t.integer "price", null: false
-    t.string "image", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
