@@ -9,8 +9,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :category
   belongs_to_active_hash :sending_area
 
-
-  #ジャンルの選択が「--」の時は保存できないようにする
+  # ジャンルの選択が「--」の時は保存できないようにする
   with_options numericality: { other_than: 1, message: 'Select' } do
     validates :status_id
     validates :shipping_time_id
@@ -21,7 +20,7 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     validates :name, :description, :image
-    validates :price, format: { with: /\d/, message: "is invalid. Input half-width integer."}
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range"}
+    validates :price, format: { with: /\d/, message: 'is invalid. Input half-width integer.' }
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }
   end
 end
