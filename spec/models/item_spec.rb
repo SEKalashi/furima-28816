@@ -7,13 +7,6 @@ RSpec.describe Item do
 
   describe '商品新規登録' do
     context '新規商品登録がうまくいくとき' do
-      # it 'ユーザーがログインしていればが出品ページへ遷移できる' do
-      #   visit  new_user_session_path
-      #   fill_in 'user_email', with: @user.email
-      #   fill_in 'user_password', with: @user.password
-      #   visit new_item_path
-      #   expect(current_path).to eq new_item_path
-      # end
 
       it '商品データが存在すれば登録できる' do
         expect(@items).to be_valid
@@ -69,8 +62,14 @@ RSpec.describe Item do
         expect(@items.errors.full_messages).to include('Shipping time Select')
       end
 
-      it '商品価格が¥300~¥9,999,999間では無いと登録できない' do
+      it '商品価格が¥300以下は登録できない' do
         @items.price = '100'
+        @items.valid?
+        expect(@items.errors.full_messages).to include('Price is out of setting range')
+      end
+
+      it '商品価格が¥10,000,000以上は登録できない' do
+        @items.price = '10000000'
         @items.valid?
         expect(@items.errors.full_messages).to include('Price is out of setting range')
       end
