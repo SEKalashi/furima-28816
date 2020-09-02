@@ -7,7 +7,7 @@
 
 | Column         | Type   | Options     |
 | -------------- | ------ | ----------- |
-| name           | string | null: false |
+| nickname       | string | null: false |
 | email          | string | null: false |
 | password       | string | null: false |
 | first_name     | string | null: false |
@@ -29,30 +29,19 @@
 | name            | string      | null: false                    |
 | description     | text        | null: false                    |
 | status          | integer     | null: false                    |
-| shipping_day    | integer     | null: false                    |
-| delivery_change | integer     | null: false                    |
+| shipping_time   | integer     | null: false                    |
+| delivery_charge | integer     | null: false                    |
 | category        | integer     | null: false                    |
-| sender          | integer     | null: false                    |
+| sending_area    | integer     | null: false                    |
 | price           | integer     | null: false                    |
+| image           | string      | null: false                    |
 | user            | references  | null: false, foreign_key: true |
 
 ### Association
 
-- has_many :images
 - belongs_to :user
 - has_one :order
 
-
-##  imagesテーブル
-
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| item            | references | null: false, foreign_key: true |
-| image           | string     | null: false                    |
-
-### Association
-
-- belongs_to :items
 
 
 ##  ordersテーブル
