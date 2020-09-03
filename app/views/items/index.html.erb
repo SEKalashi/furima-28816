@@ -122,7 +122,9 @@
            <div class='item-img-content'>
              <%= image_tag item.image, class: "item-img" %>
                <div class='sold-out'>
-                 <span>Sold Out!!</span>
+                 <% if Order.all.length > 0 %>
+                   <span>Sold Out!!</span>
+                 <% end %>
                </div>
            </div>
           
