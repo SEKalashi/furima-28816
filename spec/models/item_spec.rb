@@ -7,7 +7,6 @@ RSpec.describe Item do
 
   describe '商品新規登録' do
     context '新規商品登録がうまくいくとき' do
-
       it '商品データが存在すれば登録できる' do
         expect(@items).to be_valid
       end
