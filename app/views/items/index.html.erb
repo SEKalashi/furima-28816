@@ -117,7 +117,7 @@
     <%= link_to '新規投稿商品', new_item_path, class: "subtitle" %>
     <ul class='item-lists'>
       <li class='list'>
-        <% Item.order("created_at DESC").each do |item| %>
+        <% @items.each do |item| %>
           <%= link_to "#" do %>
            <div class='item-img-content'>
              <%= image_tag item.image, class: "item-img" %>
@@ -144,7 +144,7 @@
         <% end %>
       </li>
 
-    <% unless Item.all.length > 0 %>
+    <% unless @items.length > 0 %>
      <li>
        <%= link_to "#" do %>
           <div class='item-img-content'>
