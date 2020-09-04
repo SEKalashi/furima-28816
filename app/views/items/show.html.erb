@@ -4,10 +4,10 @@
 <div class="item-show">
   <div class="item-box">
     <h2 class="name">
-      <%= Item.find(params[:id]).name %>
+      <%= @item.name %>
     </h2>
     <div class='item-img-content'>
-      <%= image_tag Item.find(params[:id]).image ,class:"item-box-img" %>
+      <%= image_tag @item.image ,class:"item-box-img" %>
       <% if Order.all.length > 0 %>
       <div class='sold-out'>
         <span>Sold Out!!</span>
@@ -16,14 +16,14 @@
     </div>
     <div class="item-price-box">
       <span class="item-price">¥
-        <%= Item.find(params[:id]).price %>
+        <%= @item.price %>
       </span>
       <span class="item-postage">
         (税込) 送料込み
       </span>
     </div>
 
-    <% if Item.find(params[:id]).user.id == current_user.id %>
+    <% if @item.user.id == current_user.id %>
       <%= link_to '商品の編集', "#", method: :get, class: "item-red-btn" %>
       <p class='or-text'>or</p>
       <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
@@ -35,33 +35,33 @@
 
 
     <div class="item-explain-box">
-      <span><%= Item.find(params[:id]).description %></span>
+      <span><%= @item.description %></span>
     </div>
     <table class="detail-table">
       <tbody>
         <tr>
           <th class="detail-item">出品者</th>
-          <td class="detail-value"><%= Item.find(params[:id]).user.nickname %></td>
+          <td class="detail-value"><%= @item.user.nickname %></td>
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= Item.find(params[:id]).category.name %></td>
+          <td class="detail-value"><%= @item.category.name %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= Item.find(params[:id]).status.name %></td>
+          <td class="detail-value"><%= @item.status.name %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= Item.find(params[:id]).delivery_charge.name %></td>
+          <td class="detail-value"><%= @item.delivery_charge.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= Item.find(params[:id]).sending_area.name %></td>
+          <td class="detail-value"><%= @item.sending_area.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= Item.find(params[:id]).shipping_time.name %></td>
+          <td class="detail-value"><%= @item.shipping_time.name %></td>
         </tr>
       </tbody>
     </table>
@@ -100,7 +100,7 @@
       後ろの商品 ＞
     </a>
   </div>
-  <a href="#" class='another-item'><%= Item.find(params[:id]).category.name %>をもっと見る</a>
+  <a href="#" class='another-item'><%= @item.category.name %>をもっと見る</a>
 </div>
 
 <%= render "shared/footer" %>
