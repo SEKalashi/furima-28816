@@ -6,9 +6,11 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @sales = Sale.new(sales_params)
-    if @sales.save
-      redirect_to root_path
+    @sale = Sale.new(sale_params)
+    if @sale.valid?
+      pay_item
+      @sale.save
+      return redirect_to root_path
     else
       render :index
     end
@@ -17,7 +19,16 @@ class OrdersController < ApplicationController
   private
 
   def sales_params
-    params.require(:sale).permit(:postal_code, :address, :house_number, :house_name, :telephone_number, :prefecture_id).merge(item_id: current_item.id)
+    params.require(:sale).permit(:postal_code, :address, :house_number, :house_name, :telephone_number, :prefecture_id, :token)
+  end
+
+  def pay_item
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+      amount: sale_params,
+      card: sale_params[:token],
+      currency:'jpy'
+    )
   end
 
 end
