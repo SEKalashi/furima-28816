@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @sale = Sale.new(sale_params)
+    @sale = OrderSale.new(sale_params)
     if @sale.valid?
       pay_item
       @sale.save
@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
   private
 
   def sales_params
-    params.require(:sale).permit(:postal_code, :address, :house_number, :house_name, :telephone_number, :prefecture_id, :token)
+    params.require(:order_sale).permit(:postal_code, :address, :house_number, :house_name, :telephone_number, :prefecture_id, :token)
   end
 
   def pay_item
