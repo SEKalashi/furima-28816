@@ -120,13 +120,14 @@
         <% @items.each do |item| %>
           <%= link_to item_path(item) do %>
            <div class='item-img-content'>
-             <%= image_tag item.image, class: "item-img" %>
-               <div class='sold-out'>
-                 <% if Order.all.length > 0 %>
-                   <span>Sold Out!!</span>
+                 <% if @sold = Order.all
+                 @sold.where!(item_id: item[:item_id]) %>
+                  <div class='sold-out'>
+                     <span>Sold Out!!</span>
+                  </div>
                  <% end %>
-               </div>
-           </div>
+
+             <%= image_tag item.image, class: "item-img" %>
           
            <div class='item-info'>
              <h3 class='item-name'>

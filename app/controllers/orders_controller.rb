@@ -8,13 +8,11 @@ class OrdersController < ApplicationController
 
   def create
     @sale = OrderSale.new(sales_params)
-    binding.pry
     if @sale.valid?
       pay_item
       @sale.save
       return redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       render :index
     end
   end
