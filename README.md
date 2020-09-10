@@ -55,10 +55,10 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :shipping_address
+- has_one :sale
 
 
-##  shipping_addressesテーブル
+##  salesテーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
@@ -66,6 +66,7 @@
 | address          | string     | null: false                    |
 | house_number     | string     | null: false                    |
 | house_name       | string     |                                |
+| telephone_number | string     | null: false                    |
 | prefecture       | integer    | null: false                    |
 | order            | references | null: false, foreign_key: true |
 

@@ -7,8 +7,8 @@
       <%= @item.name %>
     </h2>
     <div class='item-img-content'>
-      <%= image_tag @item.image ,class:"item-box-img" %>
-      <% if Order.all.length > 0 %>
+      <%= image_tag @item.image, class:"item-box-img" %>
+      <% if Order.where(item_id: @item.id).exists? %>
       <div class='sold-out'>
         <span>Sold Out!!</span>
       </div>
@@ -29,8 +29,8 @@
       <%= link_to '削除', item_path(@item), method: :delete, class:'item-destroy' %>
     <% end %>
 
-    <% if Order.all.length == 0 %>
-      <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
+    <% unless Order.where(item_id: @item.id).exists? %>
+      <%= link_to '購入画面に進む', item_orders_path(@item) ,class:"item-red-btn"%>
     <% end %>
 
 
