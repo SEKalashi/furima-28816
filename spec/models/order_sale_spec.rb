@@ -56,5 +56,11 @@ RSpec.describe OrderSale, type: :model do
       @order_sale.house_name = nil
       expect(@order_sale).to be_valid
     end
+
+    it 'tokenが空だと保存できないこと' do
+      @order_sale.token = nil
+      @order_sale.valid?
+      expect(@order_sale.errors.full_messages).to include("Token can't be blank")
+    end
   end
 end
