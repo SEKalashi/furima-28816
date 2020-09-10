@@ -34,7 +34,7 @@
 
     <%= form_with url: item_orders_path, method: :post, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
     
-    <%# <%= render 'shared/error_messages', model: f.object %>
+    <%= render 'shared/error_messages', model: @sale %>
 
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
