@@ -7,7 +7,7 @@ class OrderSale
   end
 
   with_options presence: true do
-    validates :house_number, :address
+    validates :house_number, :address, :token
     validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
     validates :telephone_number, format: { with: /\d/, message: 'is invalid. Input half-width integer.' }
   end
