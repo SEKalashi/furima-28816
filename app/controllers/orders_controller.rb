@@ -7,7 +7,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @sale = OrderSale.new(sales_params)
     if @sale.valid?
       pay_item
       @sale.save
@@ -35,6 +34,7 @@ class OrdersController < ApplicationController
 
   def set_order
     @item = Item.find(params[:item_id])
+    @sale = OrderSale.new(sales_params)
   end
 
   def sale_errors
