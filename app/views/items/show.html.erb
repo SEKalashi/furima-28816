@@ -30,7 +30,9 @@
     <% end %>
 
     <% unless Order.where(item_id: @item.id).exists? %>
+        <% if user_signed_in? && @item.user.id != current_user.id %>
       <%= link_to '購入画面に進む', item_orders_path(@item) ,class:"item-red-btn"%>
+        <% end %>
     <% end %>
 
 
